@@ -1,0 +1,106 @@
+<style>
+body{
+    background-color: #141414;
+    color: #BDBDBD;
+    font-family:  Arial;
+    overflow-x: hidden;
+   
+}
+.grid-item span{
+    margin-left: 10px;
+    font-size: large;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.bookflix-body-show {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height:100%;
+    padding:4px;
+    width: 100%;
+    height:100%;
+    text-align: center;
+    background: rgb(0, 0, 0, 0.65);
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.table.center {
+    margin-left:auto; 
+    margin-right:auto;
+    background: rgb(0, 0, 0, 0.65);
+    color: #ffffff;
+}
+</style>
+
+<%= render partial: '/books/ext/navstart' %>
+
+                <div class="bookflix-body-show">
+                    <div class="container pt-6">
+                    <div class="is-half is-dark">
+                    <div class="columns is-centered mt-5 mb-5">
+                    <div class="card is-centered mb-5">
+                      <div class="columns is-flex is-centered mb-5">
+                             <figure class="image is-128x128">
+                             <a href=""><img src="<%= @book.cover_image_url %>" class="img-fluid rounded"></a> 
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <table class="table center is-dark">
+                <tbody>
+                    <thead>
+                    <tr>
+                      <th scope="col">Title</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Date Published</th>
+                      <th scope="col">Genre</th>
+                      <th scope="col">Publisher</th>
+                    </tr>
+                    </thead>
+                    <td><%= @book.title %></td>
+                    <td><%= @book.author %></td>
+                    <td><%= @book.published_date %></td>
+                    <td><%= @book.genre %></td>
+                    <td><%= @book.publisher %></td> 
+                    </tr>
+                    <td></td> 
+                    <th>
+                    <td><%= @book.description %></td> 
+                    </th>
+                    <td></td> 
+                    <td>
+                    <div class="text-center mb-2">
+                    <%=link_to "Edit", edit_book_path(@book), :class => "button is-success is-outlined is-small" %>
+                    </div>
+                    <div class="text-center mb-2">
+                    <%=button_to 'Delete', @book, method: :delete, form: 
+                    { data: { turbo: true, turbo_confirm: 'Are you sure?' } }, :class => "button is-danger is-outlined is-small"  %>
+                    </div>
+                    </td> 
+                </tbody>
+                </table>
+        
+
+
+
+
+                    
+                    </div>
+                   
+             
+
+                     
+              
+
+                    </div>
+                </div>
+
+<%= render partial: '/books/ext/navend' %>
